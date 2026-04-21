@@ -1,0 +1,240 @@
+/* 🎨 GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ============================= */
+/* 🌍 GLOBAL BACKGROUND */
+/* ============================= */
+
+html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* 🔥 MAIN PAGE BACKGROUND (FIXED) */
+[data-testid="stAppViewContainer"] {
+    background-color: #F1F5F9 !important;
+}
+
+/* ============================= */
+/* 🧠 TEXT SYSTEM */
+/* ============================= */
+
+/* Primary text */
+.stMarkdown p, .stText {
+    color: #1E293B !important;
+}
+
+/* Headings */
+h1, .stHeadingContainer h1 {
+    color: #0F172A !important;
+    font-weight: 700 !important;
+}
+
+h2, h3, .stHeadingContainer h2, .stHeadingContainer h3 {
+    color: #1E293B !important;
+    font-weight: 600 !important;
+}
+
+/* Labels */
+label, small {
+    color: #64748B !important;
+}
+
+/* Placeholder */
+::placeholder {
+    color: #94A3B8 !important;
+}
+
+/* ============================= */
+/* 🎯 COLOR TOKENS */
+/* ============================= */
+
+:root {
+    --primary: #3B82F6;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+}
+
+/* ============================= */
+/* ✨ ANIMATIONS */
+/* ============================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-section {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* ============================= */
+/* 📊 METRIC CARDS */
+/* ============================= */
+
+div[data-testid="metric-container"] {
+    background-color: #FFFFFF !important;
+    border-radius: 14px;
+    padding: 18px 22px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    border: 1px solid #E2E8F0;
+    transition: all 0.2s ease;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+div[data-testid="metric-container"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+/* Metric Value */
+div[data-testid="stMetricValue"] {
+    color: #0F172A !important;
+    font-weight: 700 !important;
+    font-size: 1.8rem !important;
+}
+
+/* Metric Label */
+div[data-testid="stMetricLabel"] {
+    color: #64748B !important;
+}
+
+/* ============================= */
+/* 🧾 CARD UI */
+/* ============================= */
+
+.fintech-card {
+    background-color: #FFFFFF;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    border: 1px solid #E2E8F0;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* ============================= */
+/* ⚠️ ALERT SYSTEM */
+/* ============================= */
+
+.custom-alert {
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid transparent;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.custom-alert h4 {
+    margin: 0 0 4px 0;
+    color: #0F172A;
+    font-weight: 600;
+}
+
+.custom-alert p {
+    margin: 0;
+    color: #334155;
+}
+
+.alert-high {
+    background-color: #FEE2E2;
+    border-color: #FCA5A5;
+}
+
+.alert-medium {
+    background-color: #FEF3C7;
+    border-color: #FDE047;
+}
+
+.alert-low {
+    background-color: #E2E8F0;
+    border-color: #CBD5E1;
+}
+
+.alert-success {
+    background-color: #D1FAE5;
+    border-color: #6EE7B7;
+}
+
+/* ============================= */
+/* 💬 CHAT UI */
+/* ============================= */
+
+div[data-testid="stChatMessage"] {
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Assistant */
+div[data-testid="stChatMessage"]:has(div[data-testid="chatAvatarIcon-assistant"]) {
+    background-color: #E2E8F0 !important;
+}
+
+div[data-testid="stChatMessage"]:has(div[data-testid="chatAvatarIcon-assistant"]) p {
+    color: #0F172A !important;
+}
+
+/* User */
+div[data-testid="stChatMessage"]:has(div[data-testid="chatAvatarIcon-user"]) {
+    background-color: #3B82F6 !important;
+}
+
+div[data-testid="stChatMessage"]:has(div[data-testid="chatAvatarIcon-user"]) p {
+    color: #FFFFFF !important;
+}
+
+/* ============================= */
+/* 🔘 BUTTONS */
+/* ============================= */
+
+.stButton>button {
+    background-color: #3B82F6 !important;
+    color: #FFFFFF !important;
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.stButton>button:hover {
+    background-color: #2563EB !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* ============================= */
+/* 📊 DATAFRAME */
+/* ============================= */
+
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* ============================= */
+/* 📂 SIDEBAR */
+/* ============================= */
+
+[data-testid="stSidebar"] {
+    background-color: #0F172A !important;
+}
+
+/* Sidebar text */
+[data-testid="stSidebar"] .stMarkdown p,
+[data-testid="stSidebar"] .stMarkdown h1,
+[data-testid="stSidebar"] .stMarkdown h2,
+[data-testid="stSidebar"] .stMarkdown h3,
+[data-testid="stSidebar"] label {
+    color: #E2E8F0 !important;
+}

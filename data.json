@@ -1,0 +1,47 @@
+[
+    {
+        "amount": 15,
+        "category": "Food",
+        "time": "2026-04-20 23:21"
+    },
+    {
+        "amount": 16,
+        "category": "Transport",
+        "time": "2026-04-20 23:33"
+    },
+    {
+        "amount": 50,
+        "category": "Shopping",
+        "time": "2026-04-20 23:37"
+    },
+    {
+        "amount": 200,
+        "category": "Food",
+        "time": "2026-04-20 23:47"
+    },
+    {
+        "amount": 16.0,
+        "category": "AI",
+        "time": "2026-04-21 00:27"
+    },
+    {
+        "amount": 1000.0,
+        "category": "Food",
+        "time": "2026-04-21 00:30"
+    },
+    {
+        "amount": 200,
+        "category": "Food",
+        "time": "2026-04-21 00:33"
+    },
+    {
+        "amount": 200,
+        "category": "Food",
+        "time": "2026-04-21 00:33"
+    },
+    {
+        "amount": 50.0,
+        "category": "shoes",
+        "time": "2026-04-21 00:38"
+    }
+]
