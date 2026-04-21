@@ -284,7 +284,10 @@ elif menu_selection == "AI Analysis":
     if st.button("Analyze My Spending", type="primary"):
         with st.spinner("Analyzing your spending..."):
             report = analyze_spending(st.session_state.expenses)
-            st.markdown(f"<div class='fintech-card'>{report}</div>", unsafe_allow_html=True)
+            st.markdown(
+    f"<div class='fintech-card' style='color:#000000'>{report}</div>",
+    unsafe_allow_html=True
+)
 
 elif menu_selection == "Advisor Mode":
     colA, colB = st.columns([0.8, 0.2])
