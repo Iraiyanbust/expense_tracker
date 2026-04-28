@@ -58,5 +58,325 @@
         "amount": 7535.0,
         "category": "Shopping",
         "time": "2026-04-28 08:41"
+    },
+    {
+        "amount": 250,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 180,
+        "category": "Transport",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1200,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1500,
+        "category": "Utilities",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 300,
+        "category": "Entertainment",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 800,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1000,
+        "category": "Transport",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1500,
+        "category": "Shopping",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 300,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 120,
+        "category": "Transport",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1400,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 800,
+        "category": "Utilities",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1000,
+        "category": "Shopping",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1100,
+        "category": "Transport",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 900,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1300,
+        "category": "Shopping",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 350,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 220,
+        "category": "Transport",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1500,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1600,
+        "category": "Utilities",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 400,
+        "category": "Entertainment",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 950,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1200,
+        "category": "Transport",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1800,
+        "category": "Shopping",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 280,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 100,
+        "category": "Transport",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1300,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 600,
+        "category": "Utilities",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 350,
+        "category": "Entertainment",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 850,
+        "category": "Food",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1150,
+        "category": "Transport",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 1600,
+        "category": "Shopping",
+        "time": "2026-04-28 09:29"
+    },
+    {
+        "amount": 250,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 180,
+        "category": "Transport",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1200,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1500,
+        "category": "Utilities",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 300,
+        "category": "Entertainment",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 800,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1000,
+        "category": "Transport",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1500,
+        "category": "Shopping",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 300,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 120,
+        "category": "Transport",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1400,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 800,
+        "category": "Utilities",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1000,
+        "category": "Shopping",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1100,
+        "category": "Transport",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 900,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1300,
+        "category": "Shopping",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 350,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 220,
+        "category": "Transport",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1500,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1600,
+        "category": "Utilities",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 400,
+        "category": "Entertainment",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 950,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1200,
+        "category": "Transport",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1800,
+        "category": "Shopping",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 280,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 100,
+        "category": "Transport",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1300,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 600,
+        "category": "Utilities",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 350,
+        "category": "Entertainment",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 850,
+        "category": "Food",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1150,
+        "category": "Transport",
+        "time": "2026-04-28 09:34"
+    },
+    {
+        "amount": 1600,
+        "category": "Shopping",
+        "time": "2026-04-28 09:34"
     }
 ]

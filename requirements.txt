@@ -2,4 +2,5 @@ streamlit
 groq
 python-dotenv
 pandas
-plotly
+PyPDF2
+openpyxl

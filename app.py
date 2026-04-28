@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import uuid
 from data_manager import get_expenses, add_expense, get_settings, save_settings, get_chat_sessions, save_chat_session
-from ai_agent import parse_expense_input, analyze_spending, advisor_mode, parse_receipt_image
+from ai_agent import parse_expense_input, analyze_spending, advisor_mode, parse_receipt_image, parse_bulk_expenses_from_text
 
 # --- PAGE CONFIG ---
 st.set_page_config(
@@ -149,7 +149,7 @@ if menu_selection == "Dashboard":
     # 2. ADD EXPENSE SECTION
     st.subheader("🎙️ Add Expense")
     
-    tab1, tab2 = st.tabs(["Natural Language", "Receipt OCR (Image)"])
+    tab1, tab2, tab3 = st.tabs(["Natural Language", "Receipt OCR (Image)", "Bulk Upload (PDF/Excel)"])
     with tab1:
         user_input = st.text_input("What did you spend on?")
         if st.button("Log Expense"):
@@ -183,6 +183,49 @@ if menu_selection == "Dashboard":
             else:
                 st.warning("Please upload an image first.")
 
+    with tab3:
+        try:
+            import PyPDF2
+        except ImportError:
+            st.warning("PyPDF2 is not installed. PDF parsing will fail. Please pip install PyPDF2.")
+            
+        uploaded_doc = st.file_uploader("Upload an Excel file or PDF statement", type=["pdf", "csv", "xlsx"])
+        if st.button("Extract Bulk Expenses"):
+            if uploaded_doc:
+                with st.spinner("Parsing document and extracting expenses..."):
+                    extracted_text = ""
+                    try:
+                        if uploaded_doc.name.endswith(".pdf"):
+                            pdf_reader = PyPDF2.PdfReader(uploaded_doc)
+                            for page in pdf_reader.pages:
+                                extracted_text += page.extract_text() + "\n"
+                        elif uploaded_doc.name.endswith(".csv"):
+                            df_doc = pd.read_csv(uploaded_doc)
+                            extracted_text = df_doc.to_string()
+                        elif uploaded_doc.name.endswith(".xlsx"):
+                            df_doc = pd.read_excel(uploaded_doc)
+                            extracted_text = df_doc.to_string()
+                            
+                        parsed_array = parse_bulk_expenses_from_text(extracted_text)
+                        
+                        if isinstance(parsed_array, dict) and "error" in parsed_array:
+                            st.error(parsed_array["error"])
+                        elif isinstance(parsed_array, list):
+                            if len(parsed_array) == 0:
+                                st.warning("No expenses could be identified in this document.")
+                            else:
+                                for exp in parsed_array:
+                                    add_expense(exp["amount"], exp["category"], exp.get("time"))
+                                st.session_state.expenses = get_expenses()
+                                st.success(f"Successfully configured and imported {len(parsed_array)} expenses!")
+                                st.rerun()
+                        else:
+                            st.error("Unexpected response format from processor.")
+                    except Exception as e:
+                        st.error(f"Failed to process document: {e}")
+            else:
+                st.warning("Please upload a document first.")
+
     st.divider()
 
     # -------------------------------
@@ -192,8 +235,11 @@ if menu_selection == "Dashboard":
 
     if len(st.session_state.expenses) > 0:
         df = pd.DataFrame(st.session_state.expenses)
-        df = df[["time", "category", "amount"]]
+        df["Date"] = pd.to_datetime(df["time"]).dt.strftime('%Y-%m-%d')
+        df["Time"] = pd.to_datetime(df["time"]).dt.strftime('%H:%M')
+        df = df[["Date", "Time", "category", "amount"]]
         df["amount"] = df["amount"].apply(lambda x: f"₹{float(x):,.2f}")
+        df.rename(columns={"category": "Category", "amount": "Amount"}, inplace=True)
 
         st.dataframe(df, use_container_width=True, hide_index=True)
 

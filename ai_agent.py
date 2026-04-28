@@ -104,6 +104,57 @@ def parse_receipt_image(base64_image):
     except Exception as e:
         return {"error": str(e)}
 
+def parse_bulk_expenses_from_text(document_text):
+    """
+    Parses a large block of text (like a CSV or PDF ledger) to extract an array of expenses.
+    """
+    if not client:
+        return {"error": "GROQ_API_KEY not configured in .env"}
+
+    prompt = f"""
+    You are an intelligent expense parser. 
+    Analyze the following raw text extracted from a financial document (like a PDF statement or Excel sheet).
+    Identify all distinct expenses and extract their amounts and categories.
+
+    Raw Document Text:
+    {document_text}
+
+    Return pure JSON representing a list of objects with the exact following keys:
+    [
+        {{
+            "amount": <number>,
+            "category": "<string>"
+        }},
+        ...
+    ]
+    Do not wrap in markdown tags like ```json. Just return the raw JSON array.
+    If a category is ambiguous, pick a common one (e.g. Food, Transport, Utilities, Entertainment, Shopping).
+    IGNORE random deposits or incomes. Only extract expenses/withdrawals.
+    IF no expenses are found, return an empty array [].
+    """
+
+    try:
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt,
+                }
+            ],
+            model=MODEL_REASONING,
+        )
+        response_text = chat_completion.choices[0].message.content
+        result_array = json.loads(response_text.strip())
+        
+        # Validate and format time
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+        for item in result_array:
+            item["time"] = current_time
+            
+        return result_array
+    except Exception as e:
+        return {"error": str(e)}
+
 def analyze_spending(expenses):
     """
     Analyzes historical spending and generates insights.
@@ -184,8 +235,9 @@ def advisor_mode(chat_history, expenses, budget, alerts_str):
     
     Tasks:
     1. If the user asks about summarizing alerts, warnings, or fixing, explain the Active alerts clearly, what they mean, and provide actionable remedies prioritized by urgency.
-    2. Otherwise, give a clear, concise, structured, and reasoned answer to their specific query.
-    3. Always keep it practical and avoid generic replies.
+    2. If the user asks for monthly expenses or month-wise breakdown, group the expenses by month using their 'time' field and summarize the spending month-wise.
+    3. Otherwise, give a clear, concise, structured, and reasoned answer to their specific query.
+    4. Always keep it practical and avoid generic replies.
     """
     try:
         chat_completion = client.chat.completions.create(
