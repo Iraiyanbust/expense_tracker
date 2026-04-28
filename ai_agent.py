@@ -15,6 +15,7 @@ else:
 
 MODEL_FAST = "llama-3.1-8b-instant"
 MODEL_REASONING = "openai/gpt-oss-120b"
+MODEL_VISION = "meta-llama/llama-4-scout-17b-16e-instruct"
 
 def parse_expense_input(user_input):
     """
@@ -46,6 +47,53 @@ def parse_expense_input(user_input):
                 }
             ],
             model=MODEL_FAST,
+        )
+        response_text = chat_completion.choices[0].message.content
+        result = json.loads(response_text.strip())
+        
+        # Format time on our end
+        result["time"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+        return result
+    except Exception as e:
+        return {"error": str(e)}
+
+def parse_receipt_image(base64_image):
+    """
+    Parses a base64 encoded image to extract amount and category via a vision model.
+    """
+    if not client:
+        return {"error": "GROQ_API_KEY not configured in .env"}
+
+    prompt = """
+    You are an intelligent expense parser. 
+    Analyze the uploaded receipt/expense image and extract the amount and the category.
+    
+    Return pure JSON with the exact following keys:
+    {
+        "amount": <number>,
+        "category": "<string>"
+    }
+    Do not wrap in markdown tags like ```json. Just return the raw JSON object.
+    If the category is ambiguous, pick a common one (e.g. Food, Transport, Utilities, Entertainment, Shopping).
+    """
+    
+    try:
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": prompt},
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": f"data:image/jpeg;base64,{base64_image}",
+                            },
+                        },
+                    ],
+                }
+            ],
+            model=MODEL_VISION,
         )
         response_text = chat_completion.choices[0].message.content
         result = json.loads(response_text.strip())

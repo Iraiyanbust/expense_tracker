@@ -43,5 +43,20 @@
         "amount": 50.0,
         "category": "shoes",
         "time": "2026-04-21 00:38"
+    },
+    {
+        "amount": 7535.0,
+        "category": "Shopping",
+        "time": "2026-04-28 08:41"
+    },
+    {
+        "amount": 7535.0,
+        "category": "Shopping",
+        "time": "2026-04-28 08:41"
+    },
+    {
+        "amount": 7535.0,
+        "category": "Shopping",
+        "time": "2026-04-28 08:41"
     }
 ]

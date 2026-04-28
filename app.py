@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import uuid
 from data_manager import get_expenses, add_expense, get_settings, save_settings, get_chat_sessions, save_chat_session
-from ai_agent import parse_expense_input, analyze_spending, advisor_mode
+from ai_agent import parse_expense_input, analyze_spending, advisor_mode, parse_receipt_image
 
 # --- PAGE CONFIG ---
 st.set_page_config(
@@ -144,8 +144,10 @@ if menu_selection == "Dashboard":
     st.divider()
     
     # 2. ADD EXPENSE SECTION
-    st.subheader("🎙️ Add Expense (Natural Language)")
-    with st.container():
+    st.subheader("🎙️ Add Expense")
+    
+    tab1, tab2 = st.tabs(["Natural Language", "Receipt OCR (Image)"])
+    with tab1:
         user_input = st.text_input("What did you spend on?")
         if st.button("Log Expense"):
             if user_input:
@@ -158,6 +160,25 @@ if menu_selection == "Dashboard":
                         st.session_state.expenses = get_expenses()
                         st.success("Added!")
                         st.rerun()
+
+    with tab2:
+        import base64
+        uploaded_image = st.file_uploader("Upload a receipt or expense screenshot", type=["png", "jpg", "jpeg"])
+        if st.button("Extract & Log from Image"):
+            if uploaded_image:
+                with st.spinner("Analyzing image details via OCR..."):
+                    base64_img = base64.b64encode(uploaded_image.getvalue()).decode("utf-8")
+                    parsed_data = parse_receipt_image(base64_img)
+                    
+                    if "error" in parsed_data:
+                        st.error(parsed_data["error"])
+                    else:
+                        add_expense(parsed_data["amount"], parsed_data["category"], parsed_data.get("time"))
+                        st.session_state.expenses = get_expenses()
+                        st.success("Receipt parsed and added!")
+                        st.rerun()
+            else:
+                st.warning("Please upload an image first.")
 
     st.divider()
 

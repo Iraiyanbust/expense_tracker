@@ -2,4 +2,3 @@ streamlit
 groq
 python-dotenv
 pandas
-plotly
