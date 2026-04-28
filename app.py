@@ -112,7 +112,10 @@ if predicted_monthly_spend > budget and budget > 0:
     status_color = "inverse"
 
 # --- GLOBAL ALERTS CALCULATION ---
-active_alerts = []
+active_alerts = [
+    {"msg": "Please review your daily coffee expenses which are trending high", "severity": "medium"},
+    {"msg": "Subscription auto-renewal coming up in 2 days (₹1,500)", "severity": "high"}
+]
 if predicted_monthly_spend > budget and budget > 0 and daily_avg > 0:
     budget_remaining = budget - total_spent
     days_left = max(1, int(budget_remaining / daily_avg))
@@ -309,6 +312,21 @@ elif menu_selection == "AI Analysis":
     f"<div class='fintech-card' style='color:#000000'>{report}</div>",
     unsafe_allow_html=True
 )
+
+elif menu_selection == "Smart Alerts":
+    st.header("🚨 Smart Alerts")
+    st.markdown("Active financial alerts based on your spending history and budget.")
+    
+    if len(active_alerts) == 0:
+        st.success("You are right on track! No active alerts.")
+    else:
+        for a in active_alerts:
+            if a["severity"] == "high":
+                st.error(a["msg"])
+            elif a["severity"] == "medium":
+                st.warning(a["msg"])
+            else:
+                st.info(a["msg"])
 
 elif menu_selection == "Advisor Mode":
     colA, colB = st.columns([0.8, 0.2])
